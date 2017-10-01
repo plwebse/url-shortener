@@ -1,7 +1,5 @@
 package urlShortener;
 
-import java.util.regex.Pattern;
-
 import urlShortener.exceptions.URLShortenerNamingException;
 
 public class UncheckedShortName {

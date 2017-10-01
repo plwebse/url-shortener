@@ -1,6 +1,7 @@
 package urlShortener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -22,5 +23,11 @@ public class ShortUrlStatistics {
 	
 	public List<ShortUrlStatisticsEntry> statisticsEntries(Predicate<ShortUrlStatistics> predicate) {
 		return shortUrlStatisticsEntries;
+	}
+	
+	public class ShortUrlStatisticsEntry {
+		private Date time;
+		private String ipAdress;
+		private String country;
 	}
 }
