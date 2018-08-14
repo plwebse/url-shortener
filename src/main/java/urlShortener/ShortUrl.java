@@ -4,13 +4,12 @@ import java.net.URL;
 
 public class ShortUrl {
 
-	
 	private URL shortUrl;
-	private URL orginalUrl;
+	private URL originalUrl;
 	private ShortUrlStatistics shortUrlStatistics;
 	
-	public ShortUrl(URL orginalUrl, URL shortUrl) {
-		this.orginalUrl = orginalUrl;
+	public ShortUrl(URL originalUrl, URL shortUrl) {
+		this.originalUrl = originalUrl;
 		this.shortUrl = shortUrl;
 	}
 	
@@ -18,12 +17,16 @@ public class ShortUrl {
 		return shortUrl;
 	}
 	
-	public URL orginalUrl(){
-		return orginalUrl;
+	public URL originalUrl(){
+		return originalUrl;
 	}
 	
 	public ShortUrlStatistics statistics(){
 		return shortUrlStatistics;
 	}
 
+    @Override
+    public String toString() {
+        return "ShortUrl{" + "shortUrl=" + shortUrl + ", originalUrl=" + originalUrl + ", shortUrlStatistics=" + shortUrlStatistics + '}';
+    }
 }

@@ -2,14 +2,15 @@ package urlShortener;
 
 import java.net.URL;
 
-
 import urlShortener.exceptions.URLShortenerException;
 
 public interface URLShortenerService {
 	
-	public ShortUrlStatistics statistics(); 
+	ShortUrlStatistics statistics();
 	
-	public ShortUrl convertToShortUrl(URL orginalUrl) throws URLShortenerException;
+	ShortUrl convertToShortUrl(URL originalUrl) throws URLShortenerException;
 	
-	public ShortUrl convertToShortUrl(URL orginalUrl, UncheckedShortName shortName) throws URLShortenerException;
+	ShortUrl convertToShortUrl(URL originalUrl, UncheckedShortName shortName) throws URLShortenerException;
+
+    URL getOriginalUrlFromShortName(UncheckedShortName shortName) throws URLShortenerException;
 }
