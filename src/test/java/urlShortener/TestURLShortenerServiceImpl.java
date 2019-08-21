@@ -57,7 +57,7 @@ public class TestURLShortenerServiceImpl {
                 originalUrl,
                 uncheckedShortName);
 
-        assertEquals(originalUrl, urlShortenerService.getOriginalUrlFromShortName(uncheckedShortName));
+        assertEquals(originalUrl, urlShortenerService.getOriginalUrlFromShortName(uncheckedShortName).get());
     }
 
 }

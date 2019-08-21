@@ -2,12 +2,13 @@ package urlShortener;
 
 import urlShortener.exceptions.URLShortenerNamingException;
 
-import java.util.Arrays;
-import java.util.function.Predicate;
+
+import java.util.stream.Stream;
 
 public class UncheckedShortName {
 	private String shortName;
-	private static String[] abusiveWords = {"xxx", "whore"};
+	private Stream<String> abusiveWords = Stream.of("xxx", "whore", "pc");
+	private final static String A_Z_0_9 = "[a-zA-Z0-9]*";
 
 	public UncheckedShortName(String shortName) throws URLShortenerNamingException {
 		this.shortName = shortName;
@@ -16,20 +17,22 @@ public class UncheckedShortName {
 
 	private void validate() throws URLShortenerNamingException{
 		if(shortName == null){
-			throw new URLShortenerNamingException("Not a valid shortname a", new Throwable());
+			throwUSNException("Not a valid shortname a");
 		}
 
-		if(!shortName.matches("[a-zA-Z0-9]*")){
-			throw new URLShortenerNamingException("Not a valid shortname b", new Throwable());
+		if(!shortName.matches(A_Z_0_9)){
+			throwUSNException("Not a valid shortname b");
 		}
 
-        if(Arrays.stream(abusiveWords).anyMatch(abusiveWord -> shortName.contains(abusiveWord))){
-            throw new URLShortenerNamingException("Not a valid shortname c", new Throwable());
+        if(abusiveWords.anyMatch(abusiveWord -> shortName.contains(abusiveWord))){
+			throwUSNException("Not a valid shortname c");
         }
-			
-		// TODO check for bad words	
 	}
-	
+
+	private void throwUSNException(String message) throws URLShortenerNamingException {
+		throw new URLShortenerNamingException(message, new Throwable());
+	}
+
 	@Override
 	public String toString() {
 		return shortName;
